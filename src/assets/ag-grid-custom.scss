@@ -1,0 +1,26 @@
+@import './variables.scss';
+
+.ag-theme-balham-dark {
+  --ag-background-color: $grid-bg;
+  --ag-control-panel-background-color:$grid-bg;
+  --ag-borders-critical: none;
+  --ag-foreground-color: $grid-font-color;
+  --ag-row-border-width: 0px;
+  
+  // todo .. theme variable is not working here.. find out
+  --ag-header-background-color: #0a1724; 
+  --ag-checkbox-background-color: white;
+  --ag-balham-active-color: #00b2ac;
+  --ag-odd-row-background-color: #2a3542;
+
+  .ag-floating-filter {
+    input {
+      border: none;
+      background-color: $gray-550;
+    }
+  }
+}
+
+.ag-root-wrapper {
+  border: none;
+}

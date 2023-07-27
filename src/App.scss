@@ -1,0 +1,14 @@
+@import 'assets/variables.scss';
+@import '~bootstrap/scss/bootstrap';
+
+@import '~ag-grid-community/styles/ag-grid.css';
+@import '~ag-grid-community/styles/ag-theme-balham.css';
+@import './assets/ag-grid-custom.scss';
+
+@import 'assets/font-awesome/css/all.css';
+
+@import 'assets/dashboard.scss';
+
+body, html {
+  height: 100%;
+}

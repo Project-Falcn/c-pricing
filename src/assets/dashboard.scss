@@ -1,0 +1,54 @@
+@import './variables.scss';
+
+.multi-widget-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .dashboard-header {    
+    padding: 10px;
+
+    .search-box {
+      display: flex;
+      background-color: $input-bg;
+      border-radius: 10px;
+      align-items: center;
+
+      .search-icon {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .dashboard-content {
+    display: flex;
+    flex: 1 1 90%;
+    padding: 5px;    
+    flex-wrap: wrap;
+
+    .widget {      
+      margin: 5px;
+      display: flex;      
+      flex-direction: column;      
+      flex: 1 0 700px;
+      background-color: $widget-bg;
+      border-radius: $border-radius-lg;
+
+      .widget-header {
+        flex-basis: 40px;
+        padding: 5px;
+
+        .widget-label {
+          text-transform: uppercase;          
+          color: $teal;
+          padding: 5px;
+          font-size: $label-font-size;
+        }
+      }
+
+      .widget-content {
+
+      }
+    }
+  }
+}
