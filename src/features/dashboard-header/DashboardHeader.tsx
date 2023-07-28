@@ -1,23 +1,32 @@
+import { useState } from 'react';
 
 export function DashboardHeader() {
+  const [isSearchClicked, setSearchClicked] = useState<boolean>(false);
+
+  const searchTextControl = isSearchClicked ?
+    <input
+      type="search"
+      className="form-control focus"
+      placeholder="Search" />
+    :
+    <div className="search-icon">
+      <i className="fas fa-xs fa-search"></i>
+    </div>;
+
   return (
     <div className="dashboard-header">
-      
-      {/* todo.. move searchbox in to separate component */}
-      <div className="search-box">
-        <div className="search-icon">
-          <i className="fas fa-s fa-search"></i>
-        </div>
+      {/* <div className='action-buttons'>
+        <i className='far fa-refresh'></i>
+      </div> */}
 
-        <input
-          type="search"
-          className="form-control focus"
-          placeholder="Search" />
-        <a className="">
-          <i className="bi-x-lg" />
-        </a>
+      <div className="search-box">
+        {searchTextControl}
       </div>
 
+      <div className='action-buttons'>
+        <i className='fas fa-user-circle'></i>
+        <i className='fas fa-ellipsis-v'></i>
+      </div>
     </div>
   );
 } 

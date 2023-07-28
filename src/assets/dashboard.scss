@@ -7,15 +7,30 @@
 
   .dashboard-header {    
     padding: 10px;
+    display: flex;
 
     .search-box {
       display: flex;
+      flex-basis: 100%;   
       background-color: $input-bg;
       border-radius: 10px;
       align-items: center;
 
       .search-icon {
-        margin-left: 5px;
+        margin-left: 10px;
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      align-items: center;
+
+      i {
+        margin-left: 10px;
+      }      
+
+      i:last-child {
+        margin-right: 10px;
       }
     }
   }
