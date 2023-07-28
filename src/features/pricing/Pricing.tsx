@@ -1,20 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ColDef } from 'ag-grid-community';
-import { DataGrid } from '../data-grid';
+import { DataGrid } from '../../common-components/data-grid';
+import { pricingDataService } from '../../business-services/pricing-data';
 
 export function Pricing() {
 
-  const [rowData] = useState([
-    { make: "Toyota", model: "Celica", price: 35000 },
-    { make: "Ford", model: "Mondeo", price: 32000 },
-    { make: "Porsche", model: "Boxster", price: 72000 }
-  ]);
+  const [rowData, setRowData] = useState(null);
 
   const [columnDefs] = useState<ColDef[]>([
     { field: 'make' },
     { field: 'model' },
     { field: 'price' }
   ]);
+
+  useEffect(()=> {
+    const loadSecurities = async () => {
+      const data = await pricingDataService.getSecuritiesWithPrices();
+      setRowData(data);   
+    };
+
+    loadSecurities();
+  },[]);
 
   return (
     <div className="widget">

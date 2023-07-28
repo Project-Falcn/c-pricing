@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColDef } from 'ag-grid-community';
-import { DataGrid } from '../data-grid';
+import { DataGrid } from '../../common-components/data-grid';
 
 export function RunsSummary() {
 
@@ -15,7 +15,7 @@ export function RunsSummary() {
     { field: 'model' },
     { field: 'price' }
   ]);
-  
+
   return (
     <div className="widget">
       <div className="widget-header">

@@ -18,7 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@common-services/*": ["./src/common-services/*"],
+      "@common-components/*": ["./src/common-components/*"],
+      "@business-services/*": ["./src/business-services/*"]
+    }
   },
   "include": [
     "src"

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ColDef } from 'ag-grid-community';
-import { DataGrid } from '../data-grid';
+import { DataGrid } from '../../common-components/data-grid';
 
 export function Trace() {
 
