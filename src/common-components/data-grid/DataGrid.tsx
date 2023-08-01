@@ -15,7 +15,7 @@ export function DataGrid(props: IDataGridProps) {
   const finalProps: AgGridReactProps = {
     defaultColDef: {
       floatingFilter: true,
-      filter: true,
+      filter: 'agTextColumnFilter',
       sortable: true,
       resizable: true,
       width: 120,
