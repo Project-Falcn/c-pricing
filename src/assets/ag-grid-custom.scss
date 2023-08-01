@@ -8,6 +8,7 @@
   --ag-row-border-width: 0px;
   --ag-font-size: 11px;
   --ag-borders-side-button: 0px;
+  --ag-widget-vertical-spacing: 10px;
   
   // todo .. theme variable is not working here.. find out
   --ag-header-background-color: #0a1724; 
@@ -25,6 +26,10 @@
   .ag-body-horizontal-scroll,
   .ag-body-vertical-scroll {
     display: none;
+  }
+
+  .ag-filter, .ag-menu-list {
+    background-color: $body-bg;
   }
 
   .ag-floating-filter {
