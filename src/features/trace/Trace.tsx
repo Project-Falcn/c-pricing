@@ -26,7 +26,6 @@ export function Trace() {
         <DataGrid
           rowData={rowData}
           columnDefs={columnDefs}
-          sideBar={true}
           height={400}>
         </DataGrid>
       </div>

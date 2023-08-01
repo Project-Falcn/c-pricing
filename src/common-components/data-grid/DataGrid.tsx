@@ -1,5 +1,7 @@
-// import { useMemo } from "react";
+import { useCallback } from "react";
 import { AgGridReact, AgGridReactProps } from "ag-grid-react";
+import styles from './datagrid.module.scss';
+import { GridApi, GridReadyEvent } from "ag-grid-community";
 
 export interface IDataGridProps extends AgGridReactProps {
   showGridTopSummary?: boolean;
@@ -7,6 +9,8 @@ export interface IDataGridProps extends AgGridReactProps {
 }
 
 export function DataGrid(props: IDataGridProps) {
+
+  let gridApi: GridApi;
 
   const finalProps: AgGridReactProps = {
     defaultColDef: {
@@ -17,14 +21,36 @@ export function DataGrid(props: IDataGridProps) {
       width: 120,
       ...props.defaultColDef
     },
+    sideBar: true,
     enableRangeSelection: true,
     ...props
-  }; 
+  };
+
+  const onGridReady = useCallback((event: GridReadyEvent) => {
+    gridApi = event.api;
+
+    // const toolpanelid = gridApi.getOpenedToolPanel();
+    // if (toolpanelid) {
+    //   gridApi.closeToolPanel();
+    // }
+  }, []);
 
   return (
-    <div className="ag-theme-balham-dark" style={{ height: props.height }}>
-      <AgGridReact {...finalProps}>
-      </AgGridReact>
-    </div>
+    <>
+      {/* <div className={styles["grid-summary"]}>
+        <div className={styles["record-summary"]}>
+
+        </div>
+        <div className={styles["action-buttons"]}>
+          <i className="cil-settings"></i>
+        </div>
+      </div> */}
+
+      <div className="ag-theme-balham-dark" style={{ height: props.height }}>
+        <AgGridReact {...finalProps}
+          onGridReady={onGridReady}>
+        </AgGridReact>
+      </div>
+    </>
   );
 }

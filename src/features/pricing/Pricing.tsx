@@ -5,18 +5,13 @@ import { pricingDataService } from '../../business-services/pricing-data';
 
 export function Pricing() {
 
-  const [rowData, setRowData] = useState(null);
-
-  const [columnDefs] = useState<ColDef[]>([
-    { field: 'make' },
-    { field: 'model' },
-    { field: 'price' }
-  ]);
+  const [rowData, setRowData] = useState<any>([]); // todo add type
+  const [columnDefs] = useState<ColDef[]>(getColumnDefs());
 
   useEffect(()=> {
     const loadSecurities = async () => {
-      const data = await pricingDataService.getSecuritiesWithPrices();
-      setRowData(data);   
+      const securities = await pricingDataService.getSecurities();
+      setRowData(securities);
     };
 
     loadSecurities();
@@ -32,10 +27,94 @@ export function Pricing() {
         <DataGrid
           rowData={rowData}
           columnDefs={columnDefs}
-          sideBar={true}
           height={400}>
         </DataGrid>
       </div>
     </div>
   );
+
+  function getColumnDefs(): ColDef[] {
+    return [
+      {
+        field: 'id',
+        headerName: 'Security ID',
+        width: 110
+      },
+      {
+        field: 'ticker',
+        headerName: 'Ticker',
+        width: 90
+      },
+      {
+        field: 'cusip',
+        headerName: 'Cusip',
+        width: 110
+      },
+      {
+        field: 'isin',
+        headerName: 'ISIN',
+        width: 110
+      },
+      {
+        field: 'sedol',
+        headerName: 'SEDOL',
+        width: 110
+      },
+      {
+        field: 'coupon',
+        headerName: 'Coupon',
+        width: 90
+      },
+      {
+        field: 'maturity',
+        headerName: 'Maturity',
+        width: 110
+      },
+      {
+        field: 'security',
+        headerName: 'Description',
+        width: 240
+      },
+      {
+        field: 'quoteType',
+        headerName: 'Quote Type',
+        width: 100
+      },
+      {
+        field: 'bmkIsin',
+        headerName: 'Benchmark',
+        width: 110
+      },
+      {
+        field: 'bid',
+        headerName: 'Bid',
+        width: 90
+      },
+      {
+        field: 'ask',
+        headerName: 'Ask',
+        width: 90
+      },
+      {
+        field: 'bidYield',
+        headerName: 'Bid Yield',
+        width: 90
+      },
+      {
+        field: 'askYield',
+        headerName: 'Ask Yield',
+        width: 90
+      },
+      {
+        field: 'bidSpread',
+        headerName: 'Bid Spread',
+        width: 90
+      },
+      {
+        field: 'askSpread',
+        headerName: 'Ask Spread',
+        width: 90
+      },
+    ];
+  }
 } 

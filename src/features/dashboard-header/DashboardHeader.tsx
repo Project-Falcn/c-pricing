@@ -24,6 +24,9 @@ export function DashboardHeader() {
       </div>
 
       <div className='action-buttons'>
+      <i className="cil-settings"></i>
+
+
         <i className='fas fa-user-circle'></i>
         <i className='fas fa-ellipsis-v'></i>
       </div>
