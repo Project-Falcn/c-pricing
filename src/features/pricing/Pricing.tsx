@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ColDef } from 'ag-grid-community';
-import { DataGrid } from '../../common-components/data-grid';
+import { DataGrid, getNumberColDefTemplate } from '../../common-components/data-grid';
 import { pricingDataService } from '../../business-services/pricing-data';
 
 export function Pricing() {
@@ -38,7 +38,7 @@ export function Pricing() {
       {
         field: 'id',
         headerName: 'Security ID',
-        width: 110
+        width: 100
       },
       {
         field: 'ticker',
@@ -48,19 +48,20 @@ export function Pricing() {
       {
         field: 'cusip',
         headerName: 'Cusip',
-        width: 110
+        width: 100
       },
       {
         field: 'isin',
         headerName: 'ISIN',
-        width: 110
+        width: 100
       },
       {
         field: 'sedol',
         headerName: 'SEDOL',
-        width: 110
+        width: 100
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'coupon',
         headerName: 'Coupon',
         width: 90
@@ -68,7 +69,7 @@ export function Pricing() {
       {
         field: 'maturity',
         headerName: 'Maturity',
-        width: 110
+        width: 100
       },
       {
         field: 'security',
@@ -83,34 +84,40 @@ export function Pricing() {
       {
         field: 'bmkIsin',
         headerName: 'Benchmark',
-        width: 110
+        width: 100
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'bid',
         headerName: 'Bid',
         width: 90
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'ask',
         headerName: 'Ask',
         width: 90
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'bidYield',
         headerName: 'Bid Yield',
         width: 90
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'askYield',
         headerName: 'Ask Yield',
         width: 90
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'bidSpread',
         headerName: 'Bid Spread',
         width: 90
       },
       {
+        ...getNumberColDefTemplate(2),
         field: 'askSpread',
         headerName: 'Ask Spread',
         width: 90
