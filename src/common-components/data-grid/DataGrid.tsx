@@ -29,10 +29,10 @@ export function DataGrid(props: IDataGridProps) {
   const onGridReady = useCallback((event: GridReadyEvent) => {
     gridApi = event.api;
 
-    // const toolpanelid = gridApi.getOpenedToolPanel();
-    // if (toolpanelid) {
-    //   gridApi.closeToolPanel();
-    // }
+    const toolpanelid = gridApi.getOpenedToolPanel();
+    if (toolpanelid) {
+      gridApi.closeToolPanel();
+    }
   }, []);
 
   return (
