@@ -1,3 +1,4 @@
+import { SearchDataContextProvider } from '../../business-services/search-context-data';
 import { DashboardHeader } from '../dashboard-header';
 import { Pricing } from '../pricing';
 import { RunsSummary } from '../runs-summary';
@@ -7,13 +8,15 @@ export function Dashboard() {
 
   return (
     <div className="multi-widget-dashboard">
-      <DashboardHeader></DashboardHeader>
+      <SearchDataContextProvider>
+        <DashboardHeader></DashboardHeader>
 
-      <div className="dashboard-content">
-        <Pricing></Pricing>
-        <RunsSummary></RunsSummary>
-        <Trace></Trace>
-      </div>
+        <div className="dashboard-content">
+          <Pricing></Pricing>
+          <RunsSummary></RunsSummary>
+          <Trace></Trace>
+        </div>
+      </SearchDataContextProvider>
     </div>
   );
 } 

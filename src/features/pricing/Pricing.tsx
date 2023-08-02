@@ -1,21 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { ColDef } from 'ag-grid-community';
 import { DataGrid, getNumberColDefTemplate } from '../../common-components/data-grid';
 import { pricingDataService } from '../../business-services/pricing-data';
+import { SearchDataContext } from '../../business-services/search-context-data';
 
 export function Pricing() {
 
-  const [rowData, setRowData] = useState<any>([]); // todo add type
+  const [allInstruments, setAllInstruments] = useState<any>([]); // todo add type
   const [columnDefs] = useState<ColDef[]>(getColumnDefs());
+  const { searchData } = useContext(SearchDataContext);
+  
+  let filteredInstruments: any[] = [];
 
-  useEffect(()=> {
-    const loadSecurities = async () => {
-      const securities = await pricingDataService.getSecurities();
-      setRowData(securities);
+  applySearchFilter();
+
+  useEffect(() => {
+    const loadInstruments = async () => {
+      const instruments = await pricingDataService.getSecurities();      
+      setAllInstruments(instruments);
     };
 
-    loadSecurities();
-  },[]);
+    loadInstruments();
+  }, []);
+
+  function applySearchFilter() {
+    if (!allInstruments?.length) {
+      return;
+    }
+
+    // todo.. apply isin, sedol, desc and upper case etc..
+    filteredInstruments = allInstruments
+      .filter((instrument: any) => !searchData?.text || instrument.cusip.includes(searchData.text));
+  }
 
   return (
     <div className="widget">
@@ -25,7 +41,7 @@ export function Pricing() {
 
       <div className="widget-content">
         <DataGrid
-          rowData={rowData}
+          rowData={filteredInstruments}
           columnDefs={columnDefs}
           height={400}>
         </DataGrid>

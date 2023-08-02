@@ -1,17 +1,15 @@
-import { useState } from 'react';
+import { SearchDataContext } from '../../business-services/search-context-data';
+import { useCallback, useContext, useState } from 'react';
 
 export function DashboardHeader() {
-  const [isSearchClicked, setSearchClicked] = useState<boolean>(false);
+  const { searchData, setSearchData } = useContext(SearchDataContext);
 
-  const searchTextControl = isSearchClicked ?
-    <input
-      type="search"
-      className="form-control focus"
-      placeholder="Search" />
-    :
-    <div className="search-icon">
-      <i className="fas fa-xs fa-search"></i>
-    </div>;
+  const onSearchTextChange = useCallback((event: any) => {
+    // todo.. avoid null check usin proper types
+    if (setSearchData) {
+      setSearchData({ text: event.target.value });
+    }
+  }, []);
 
   return (
     <div className="dashboard-header">
@@ -20,13 +18,17 @@ export function DashboardHeader() {
       </div> */}
 
       <div className="search-box">
-        {searchTextControl}
+        <i className="fas fa-xs fa-search me-2"></i>
+        <input
+          type="search"
+          className="form-control focus"
+          placeholder="Search"
+          value={searchData?.text}
+          onChange={onSearchTextChange} />
       </div>
 
       <div className='action-buttons'>
-      <i className="cil-settings"></i>
-
-
+        <i className="cil-settings"></i>
         <i className='fas fa-user-circle'></i>
         <i className='fas fa-ellipsis-v'></i>
       </div>

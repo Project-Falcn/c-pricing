@@ -12,9 +12,10 @@
     .search-box {
       display: flex;
       flex-basis: 100%;   
-      background-color: $input-bg;
-      border-radius: 10px;
+      // background-color: $input-bg;
+      // border-radius: 10px;
       align-items: center;
+      cursor: pointer;
 
       .search-icon {
         margin-left: 10px;
