@@ -1,2 +1,2 @@
-export * from './search-context-provider';
+export * from './search-data-context-provider';
 export * from  './model';
