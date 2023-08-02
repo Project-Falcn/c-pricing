@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { ColDef } from 'ag-grid-community';
 import { DataGrid, getNumberColDefTemplate } from '../../common-components/data-grid';
 import { pricingDataService } from '../../business-services/pricing-data';
-import { SearchDataContext } from '../../business-services/search-context-data';
+import { SearchDataContext } from '../../business-services/search-data-context';
 
 export function Pricing() {
 

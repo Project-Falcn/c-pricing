@@ -1,15 +1,15 @@
-import { SearchDataContext } from '../../business-services/search-context-data';
+import { SearchDataContext } from '../../business-services/search-data-context';
 import { useCallback, useContext, useState } from 'react';
 
 export function DashboardHeader() {
   const { searchData, setSearchData } = useContext(SearchDataContext);
 
-  const onSearchTextChange = useCallback((event: any) => {
+  const onSearchTextChange = (event: any) => {
     // todo.. avoid null check usin proper types
     if (setSearchData) {
       setSearchData({ text: event.target.value });
     }
-  }, []);
+  };
 
   return (
     <div className="dashboard-header">
