@@ -1,5 +1,11 @@
 @import 'variables.scss';
 
+.btn {
+  --bs-btn-bg: #{$gray-550};  
+  --bs-btn-color: silver;  
+  border: none;
+}
+
 .form-control:focus {
   box-shadow: 0 0 0 0.10rem rgba(55, 125, 255, 0.25);
 }
