@@ -15,6 +15,11 @@ export function Dashboard() {
           <Pricing></Pricing>
           <RunsSummary></RunsSummary>
           <Trace></Trace>
+          <div className="widget">
+            <div className="widget-header">
+              <span className="widget-label">Market Landscape - TODO</span>
+            </div>
+          </div>
         </div>
       </SearchDataContextProvider>
     </div>

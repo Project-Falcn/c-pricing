@@ -6,17 +6,17 @@ import { pricingDataService } from '../../business-services/pricing-data';
 export function RunsSummary() {
 
   const [rowData, setRowData] = useState<any>([]); // todo add type
-  
+
   const [columnDefs] = useState<ColDef[]>([
     { field: 'make' },
     { field: 'model' },
     { field: 'price' }
   ]);
 
-  useEffect(()=> {
+  useEffect(() => {
     const loadSecurities = async () => {
       const data = await pricingDataService.getSecuritiesWithPrices();
-      setRowData(data);   
+      setRowData(data);
     };
 
     loadSecurities();
@@ -29,11 +29,44 @@ export function RunsSummary() {
       </div>
 
       <div className="widget-content">
-        <DataGrid
-          rowData={rowData}
-          columnDefs={columnDefs}
-          height={400}>
-        </DataGrid>
+        <table className='table'>
+          <tbody>
+            <tr>
+              <td scope="row">
+                <input type='checkbox'></input>
+              </td>
+              <td>
+                CS-HY Sell Axes
+                <div className='sub-label'>Scheduled in 10 minutes</div>
+              </td>
+              <td>
+                13:50:01
+                <div className='sub-label'>Run 2 minutes ago</div>
+              </td>
+              <td width="30%">
+                <button type='button' className='btn btn-secondary me-2'>Schedule</button>
+                <button type='button' className='btn btn-secondary'>Send Run</button>
+              </td>
+            </tr>
+            <tr>
+              <td scope="row">
+                <input type='checkbox'></input>
+              </td>
+              <td>
+                CS-HY Sell Buys
+                <div className='sub-label'>Scheduled in 35 minutes</div>
+              </td>
+              <td>
+                02:50:01
+                <div className='sub-label'>Run 98 minutes ago</div>
+              </td>
+              <td>
+                <button type='button' className='btn btn-secondary me-2'>Schedule</button>
+                <button type='button' className='btn btn-secondary'>Send Run</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   );

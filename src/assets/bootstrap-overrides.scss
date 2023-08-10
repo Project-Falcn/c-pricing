@@ -1,4 +1,15 @@
+@import 'variables.scss';
 
 .form-control:focus {
   box-shadow: 0 0 0 0.10rem rgba(55, 125, 255, 0.25);
+}
+
+.table {
+  font-size: .8rem;
+
+  .sub-label {
+    font-size: $label-font-size;
+    // color: $sub-label-font-color;
+    opacity: .6;
+  }
 }

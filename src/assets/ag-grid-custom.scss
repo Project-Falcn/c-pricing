@@ -46,6 +46,11 @@
   .ag-side-bar-right {
     border-left: 0;
   }
+
+  .ag-status-bar {
+    border-top: none;    
+    color: $grid-font-color;
+  }
 }
 
 .ag-root-wrapper {

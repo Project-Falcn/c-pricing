@@ -42,13 +42,18 @@
     padding: 5px;    
     flex-wrap: wrap;
 
+    .widget:first-child {
+      flex-basis: 100%;
+    }
+
     .widget {      
       margin: 5px;
       display: flex;      
       flex-direction: column;      
-      flex: 1 0 700px;
+      flex: 1;
       background-color: $widget-bg;
       border-radius: $border-radius-lg;
+      min-width: 500px;
 
       .widget-header {
         flex-basis: 40px;
@@ -58,6 +63,7 @@
           text-transform: uppercase;          
           color: $teal;
           padding: 5px;
+          font-weight: bold;
           font-size: $label-font-size;
         }
       }

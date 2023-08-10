@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useMemo } from "react";
 import { AgGridReact, AgGridReactProps } from "ag-grid-react";
 import styles from './datagrid.module.scss';
 import { GridApi, GridReadyEvent } from "ag-grid-community";
@@ -35,6 +35,17 @@ export function DataGrid(props: IDataGridProps) {
     }
   }, []);
 
+  const statusBar = useMemo(() => {
+    return {
+      statusPanels: [
+        { statusPanel: 'agTotalAndFilteredRowCountComponent', align: 'left' },        
+        { statusPanel: 'agFilteredRowCountComponent' },
+        { statusPanel: 'agSelectedRowCountComponent' },
+        { statusPanel: 'agAggregationComponent' },
+      ],
+    };
+  }, []);
+
   return (
     <>
       {/* <div className={styles["grid-summary"]}>
@@ -48,6 +59,7 @@ export function DataGrid(props: IDataGridProps) {
 
       <div className="ag-theme-balham-dark" style={{ height: props.height }}>
         <AgGridReact {...finalProps}
+          statusBar={statusBar}
           onGridReady={onGridReady}>
         </AgGridReact>
       </div>
