@@ -10,6 +10,19 @@
   box-shadow: 0 0 0 0.10rem rgba(55, 125, 255, 0.25);
 }
 
+.form-check-input {
+  --bs-form-check-bg: silver;
+
+  &:checked {
+    background-color: $teal;
+    border-color: $teal;
+  }
+
+  &:focus {
+    border-color: $teal;
+  }
+}
+
 .table {
   font-size: .8rem;
 

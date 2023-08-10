@@ -71,6 +71,12 @@
       .widget-content {
 
       }
+
+      .widget-summary {
+        background-color: $body-bg;
+        font-size: .8rem;
+        padding: 5px;
+      }
     }
   }
 }

@@ -22,6 +22,48 @@ export function RunsSummary() {
     loadSecurities();
   });
 
+  const rows = [];
+  for (let index = 0; index < 3; index++) {
+    rows.push(
+      <>
+        <tr>
+          <td scope="row">
+            <input type='checkbox' className='form-check-input'></input>
+          </td>
+          <td>
+            CS-HY Sell Axes
+            <div className='sub-label'>Scheduled in 10 minutes</div>
+          </td>
+          <td>
+            13:50:01
+            <div className='sub-label'>Run 2 minutes ago</div>
+          </td>
+          <td width="30%">
+            <button type='button' className='btn btn-secondary me-2'>Schedule</button>
+            <button type='button' className='btn btn-secondary'>Send Run</button>
+          </td>
+        </tr>
+        <tr>
+          <td scope="row">
+            <input type='checkbox' className='form-check-input'></input>
+          </td>
+          <td>
+            CS-HY Sell Buys
+            <div className='sub-label'>Scheduled in 35 minutes</div>
+          </td>
+          <td>
+            02:50:01
+            <div className='sub-label'>Run 98 minutes ago</div>
+          </td>
+          <td>
+            <button type='button' className='btn btn-secondary me-2'>Schedule</button>
+            <button type='button' className='btn btn-secondary'>Send Run</button>
+          </td>
+        </tr>
+      </>
+    );
+  }
+
   return (
     <div className="widget">
       <div className="widget-header">
@@ -29,42 +71,12 @@ export function RunsSummary() {
       </div>
 
       <div className="widget-content">
+        <div className='widget-summary'>
+          Total Runs: 29
+        </div>
         <table className='table'>
           <tbody>
-            <tr>
-              <td scope="row">
-                <input type='checkbox'></input>
-              </td>
-              <td>
-                CS-HY Sell Axes
-                <div className='sub-label'>Scheduled in 10 minutes</div>
-              </td>
-              <td>
-                13:50:01
-                <div className='sub-label'>Run 2 minutes ago</div>
-              </td>
-              <td width="30%">
-                <button type='button' className='btn btn-secondary me-2'>Schedule</button>
-                <button type='button' className='btn btn-secondary'>Send Run</button>
-              </td>
-            </tr>
-            <tr>
-              <td scope="row">
-                <input type='checkbox'></input>
-              </td>
-              <td>
-                CS-HY Sell Buys
-                <div className='sub-label'>Scheduled in 35 minutes</div>
-              </td>
-              <td>
-                02:50:01
-                <div className='sub-label'>Run 98 minutes ago</div>
-              </td>
-              <td>
-                <button type='button' className='btn btn-secondary me-2'>Schedule</button>
-                <button type='button' className='btn btn-secondary'>Send Run</button>
-              </td>
-            </tr>
+            {rows}
           </tbody>
         </table>
       </div>
