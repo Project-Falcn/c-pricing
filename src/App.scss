@@ -9,7 +9,9 @@
 @import 'assets/font-awesome/css/all.css';
 @import '~@coreui/icons/css/all.css';
 
+@import 'assets/ag-grid-custom.scss';
 @import 'assets/dashboard.scss';
+@import 'assets/multi-select-custom.scss';
 
 body, html {
   height: 100%;

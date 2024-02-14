@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { ColDef } from 'ag-grid-community';
+import { MultiSelect } from 'react-multi-select-component';
 import { DataGrid, getNumberColDefTemplate } from '../../common-components/data-grid';
 import { pricingDataService } from '../../business-services/pricing-data';
 import { SearchDataContext } from '../../business-services/search-data-context';
@@ -8,15 +9,22 @@ export function Pricing() {
 
   const [allInstruments, setAllInstruments] = useState<any>([]); // todo add type
   const [columnDefs] = useState<ColDef[]>(getColumnDefs());
+  const [selected, setSelected] = useState([]);
   const { searchData } = useContext(SearchDataContext);
-  
+
+  const options = [
+    { label: "Grapes 🍇", value: "grapes" },
+    { label: "Mango 🥭", value: "mango" },
+    { label: "Strawberry 🍓", value: "strawberry", disabled: true },
+  ];
+
   let filteredInstruments: any[] = [];
 
   applySearchFilter();
 
   useEffect(() => {
     const loadInstruments = async () => {
-      const instruments = await pricingDataService.getSecurities();      
+      const instruments = await pricingDataService.getSecurities();
       setAllInstruments(instruments);
     };
 
@@ -34,12 +42,33 @@ export function Pricing() {
   }
 
   return (
-    <div className="widget">
-      <div className="widget-header">
-        <span className="widget-label">Pricing</span>
+    <div className='widget'>
+      <div className='widget-header'>
+        <span className='widget-label'>Pricing</span>
       </div>
 
-      <div className="widget-content">
+      <div className='widget-content'>
+        <div className='d-flex'>
+          <MultiSelect
+            className="dark"
+            options={options}
+            value={selected}
+            onChange={setSelected}
+            labelledBy='Select Sector'
+            overrideStrings={{selectSomeItems : 'Select Sector...'}}
+            />
+
+          <MultiSelect
+            className="dark"
+            options={options}
+            value={selected}
+            onChange={setSelected}
+            labelledBy="Select Ticker"
+            overrideStrings={{selectSomeItems : 'Select Ticker...'}}
+            />
+        </div>
+        
+
         <DataGrid
           rowData={filteredInstruments}
           columnDefs={columnDefs}
